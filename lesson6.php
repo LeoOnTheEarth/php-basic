@@ -15,14 +15,14 @@ print_r($variable);
 // http://localhost/index.php?foo=bar
 /**
  * <form method="GET">
- *  <input type="text" value="bar" />
+ *  <input type="text" name="foo" value="bar" />
  *  <input type="submit" value="submit" />
  * </form>
  */
 var_dump($_GET['foo']);
 /**
  * <form method="POST">
- *  <input type="text" value="bar" />
+ *  <input type="text" name="foo" value="bar" />
  *  <input type="submit" value="submit" />
  * </form>
  */
@@ -37,11 +37,12 @@ if (isset($_POST['foo'])) {
     echo '$_POST["foo"] is exists';
 }
 
-
 // 寫文件
 // http://www.phpdoc.org/docs/latest/index.html
 /**
  * Class DocumentExample
+ *
+ * Description
  *
  * @author Leo <leo@bm-sms.com.tw>
  */
@@ -101,12 +102,49 @@ class DocumentExample
     }
 }
 
+/**
+ * Class Bar
+ */
 class Bar
 {
+    /**
+     * 文件範例
+     *
+     * @var $bar DocumentExample
+     */
     protected $bar;
 
+    /**
+     * 給定一個文件範例物件
+     *
+     * @param DocumentExample $bar 文件範例物件
+     */
     public function setBar($bar)
     {
         $this->bar = $bar;
     }
+}
+
+
+// anonymous function 匿名函式
+$function = function ($year, $month) {
+    printf('this month is %s-%s', $year, $month);
+};
+$function(2013, 10);
+echo "\n";
+
+$myArgumentUseInAnonymousFunction = '2013-10-04';
+$function2 = function () use ($myArgumentUseInAnonymousFunction) {
+    printf('the date is %s', $myArgumentUseInAnonymousFunction);
+};
+$function2();
+echo "\n";
+
+function test() {
+    $func = function () {
+        echo 'test';
+
+    };
+
+    $func();
 }

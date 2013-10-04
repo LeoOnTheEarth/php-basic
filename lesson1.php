@@ -22,6 +22,7 @@ echo "hello world";
 // another way to print a new line
 echo PHP_EOL;
 
+
 // 跳脫字元處理
 echo 'hello \'world\'' . PHP_EOL;
 echo "hello \"world\"" . PHP_EOL;
@@ -31,7 +32,8 @@ echo "hello \\'world\\'" . PHP_EOL;
 print('hello world' . PHP_EOL);
 
 // 字串串接的方式
-echo 'hello' . ' ' . 'world' . PHP_EOL;
+$str = 'hello' . ' ' . 'world' . PHP_EOL;
+echo $str;
 // 字串串接的方式 2
 echo 'hello' , ' ' , 'world' , PHP_EOL;
 
@@ -66,9 +68,9 @@ $sql = sprintf($sql, $uid);
 // 特殊字串賦值的方式
 $multiLineContent = <<<EOF
 <html>
-<head>
-    <title>title</title>
-</head>
+    <head>
+        <title>title</title>
+    </head>
 <body>
     uid: $uid
 </body>
@@ -77,6 +79,7 @@ EOF;
 echo $multiLineContent . PHP_EOL;
 
 // 特殊字串賦值的方式2
+echo 'before ob_start()' . PHP_EOL;
 ob_start();
 ?>
 
@@ -91,8 +94,9 @@ uid: <?php echo $uid; ?>
 
 <?php
 $content = ob_get_contents();
-ob_end_flush();
+ob_end_clean();
+echo 'after ob_end_clean()' . PHP_EOL;
 
 echo $content . PHP_EOL;
 
-echo 'Lesson 1 End!' . PHP_EOL;
+//echo 'Lesson 1 End!' . PHP_EOL;

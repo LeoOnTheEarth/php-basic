@@ -45,15 +45,18 @@ if (1 === '1') {
 // instanceof
 class FooBar {}
 class FooBar2 {}
+class FooBar3 extends FooBar {}
 $test = new FooBar();
 if ($test instanceof FooBar) {
     echo '$test is a instanceof FooBar object' . PHP_EOL;
 }
-$test = new FooBar2();
+$test = new FooBar3();
 if ($test instanceof FooBar) {
     echo '$test is a instanceof FooBar object' . PHP_EOL;
 } else if ($test instanceof FooBar2) {
     echo '$test is a instanceof FooBar2 object' . PHP_EOL;
+} else {
+    echo '通通都沒有!' . PHP_EOL;
 }
 
 // for loop
@@ -84,7 +87,7 @@ foreach ($pureArray as $element) {
 // foreach #2
 $keyValueArray = array(
     'foo' => 123,
-    'bar' => array(),
+    'bar' => 'xxx',
     'foobar' => 'abc',
 );
 foreach ($keyValueArray as $key => $value) {
@@ -99,6 +102,7 @@ $keyValueArray2 = array(
 );
 foreach ($keyValueArray2 as $key => &$value) {
     if ('foo' === $key) {
+        //$keyValueArray2[$key] = 'value';
         $value = 'replace by reference';
     }
 }

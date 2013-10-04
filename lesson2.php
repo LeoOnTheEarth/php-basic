@@ -32,21 +32,29 @@ if (is_array($basicArray)) {
 if (array_key_exists('foo', $keyValueArray)) {
     echo 'key exists' . PHP_EOL;
 }
+if (isset($keyValueArray['foo'])) {
+    echo 'key exists' . PHP_EOL;
+}
 
 // PHP5.4 新語法
-$newArray = [1, 2, 3, 4, 5, 6];
+$newArray = [6, 1, 2, 3, 4, 5];
 $newArray = [1, 'foo' => 'bar', 'key' => [1, 3, 4]];
 
 // sort (call by reference)
+// 小到大排序
 sort($newArray);
+// 大到小排序
 rsort($newArray);
+// 自訂排序
 usort($newArray, function ($left, $right) {
     if ($left == $right) {
         return 0;
     }
 
-    return ($left < $right) ? -1 : 1;
+    return ($left > $right) ? -1 : 1;
 });
 
+echo '<pre>';
 var_dump($newArray);
-print_r($newArray);
+print_r($newArray, false); // $str = print_r($newArray, true);
+echo '</pre>';

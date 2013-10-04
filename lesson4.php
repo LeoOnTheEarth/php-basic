@@ -20,6 +20,10 @@ class Foo
     {
         $this->foo = $foo;
     }
+
+    public function foo() {
+
+    }
 }
 
 /**
@@ -37,6 +41,11 @@ class ExFoo extends Foo
     public function __construct($foo)
     {
         parent::__construct($foo);
+    }
+
+    public function test()
+    {
+        //$this->foo;
     }
 }
 
@@ -89,6 +98,19 @@ class Me implements Mix
         echo 'teach';
     }
 }
+class MyTeacher implements Teacher
+{
+    public function teach() {
+        echo 'teach';
+    }
+}
+$me = new Me();
+$tea = new MyTeacher();
+function test(Student $student, Teacher $teacher) {
+
+}
+test($me, $me);
+// test($tea, $me); // error!
 
 /**
  * 抽像物件
@@ -102,12 +124,17 @@ abstract class AbstractStudent
 {
     protected $name;
     protected $class;
+
+    public function run()
+    {
+        echo 'run';
+    }
 }
 class EngineerStudent extends AbstractStudent
 {
     protected $geekLevel;
 }
-class ArtStudent extends AbstractStudent
+class ArtStudent extends AbstractStude
 {
     protected $fashionLevel;
 }

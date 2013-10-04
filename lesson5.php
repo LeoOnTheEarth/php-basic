@@ -9,9 +9,11 @@
 
 /*
 try {
-    throw new Exception('this is a exception');
-} catch (Exception $e) {
-    echo $e->getMessage();
+    if (1 != '1') {
+        throw new Exception('this is a exception');
+    }
+} catch (Exception $exception) {
+    echo $exception->getMessage();
 }
 */
 
@@ -21,16 +23,16 @@ class MyException extends Exception
 
 }
 try {
-    throw new Exception('this is a exception');
+    //throw new Exception('this is a exception');
+    throw new MyException('this is my exception');
 } catch (MyException $e) {
-    echo $e->getMessage();
+    echo '#2 ' . $e->getMessage();
 } catch (Exception $e) {
-    echo $e->getMessage();
+    echo '#1 ' . $e->getMessage();
 }
 */
 
 // 基本實作可能的情形
-/*
 class ShitException extends Exception
 {
 
@@ -44,5 +46,10 @@ function test() {
 
     echo 'happy weekend!!' . PHP_EOL;
 };
-test();
-*/
+
+try {
+    test();
+} catch (ShitException $e) {
+    echo $e->getLine();
+    echo $e->getMessage();
+}
