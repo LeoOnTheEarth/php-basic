@@ -10,6 +10,7 @@ class Foo
     public $bar;
     protected $abc = '';        // 給定初始值
     private $foo;
+    public static $property;    // 靜態成員屬性
 
     /**
      * 建購子
@@ -23,6 +24,13 @@ class Foo
 
     public function foo() {
 
+    }
+
+    public static function staticFunction()     // 靜態方法
+    {
+        echo 'this is a static class method.';
+
+        // 可以用 Foo::staticFunction() 的語法做該方法的呼叫
     }
 }
 
