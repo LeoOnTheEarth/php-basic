@@ -1,10 +1,5 @@
 <?php
-
-/**
- * PHP basic usage examples.
- * Lesson 4: Class
- */
-
+	
 class Foo
 {
     public $bar;
